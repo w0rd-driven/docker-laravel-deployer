@@ -2,9 +2,6 @@ FROM php:5.6-fpm
 
 MAINTAINER Jeremy Brayton <jeremy@braytonium.com>
 
-# Set COMPOSER_HOME environment variable
-ENV COMPOSER_HOME /cache/composer
-
 # apt-get required packages
 RUN apt-get update -yqq && apt-get install -yqq git zlib1g-dev
 
@@ -17,6 +14,11 @@ RUN docker-php-ext-install pdo_mysql zip
 
 # Install composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+# Environmental variables
+ENV COMPOSER_HOME /root/composer
+ENV COMPOSER_CACHE_DIR /cache
+ENV PATH /root/composer/vendor/bin:$PATH
 
 # Install composer parallel downloads
 RUN composer global require "hirak/prestissimo:^0.3"
