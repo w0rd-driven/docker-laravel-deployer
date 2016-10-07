@@ -3,14 +3,15 @@ FROM php:5.6-fpm
 MAINTAINER Jeremy Brayton <jeremy@braytonium.com>
 
 # apt-get required packages
-RUN apt-get update -yqq && apt-get install -yqq git openssh-client libssh2-1 libssh2-1-dev zlib1g-dev
+RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev
 
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip
 
 # Install ssh2
-RUN pecl install ssh2 \
-    && docker-php-ext-enable ssh2
+#RUN apt-get install -yqq libssh2-1 libssh2-1-dev \
+#    && pecl install ssh2 \
+#    && docker-php-ext-enable ssh2
 
 # Install xdebug
 #RUN pecl install xdebug \
@@ -32,4 +33,4 @@ RUN composer global require "deployer/deployer:~3.3"
 RUN composer global require "deployphp/recipes:~3.1"
 
 # Install PHP SSH2 extension
-RUN composer global require "herzult/php-ssh:~1.1"
+#RUN composer global require "herzult/php-ssh:~1.1"
