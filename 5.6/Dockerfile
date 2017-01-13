@@ -29,8 +29,8 @@ ENV PATH /root/.composer/vendor/bin:$PATH
 RUN composer global require "hirak/prestissimo:^0.3"
 
 # Install deployer
-RUN composer global require "deployer/deployer:~3.3"
-RUN composer global require "deployphp/recipes:~3.1"
+RUN composer global require "deployer/deployer"
+RUN composer global require --dev "deployer/recipes"
 
 # Install PHP SSH2 extension
 #RUN composer global require "herzult/php-ssh:~1.1"
