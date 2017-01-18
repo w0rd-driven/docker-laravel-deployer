@@ -6,7 +6,7 @@ MAINTAINER Jeremy Brayton <jeremy@braytonium.com>
 RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev
 
 # PHP extension installation
-RUN docker-php-ext-install pdo_mysql zip
+RUN docker-php-ext-install pdo_mysql zip bcmath
 
 # Install iconv, mcrypt, and gd
 RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev \
