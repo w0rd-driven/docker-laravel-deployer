@@ -8,11 +8,18 @@ RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip bcmath
 
-# Install iconv, mcrypt, and gd
-RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev libpng12-dev \
-    && docker-php-ext-install -j$(nproc) iconv mcrypt \
+# Install iconv and gd
+RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
+    && docker-php-ext-install -j$(nproc) iconv \
     && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
+
+# Install mcrypt
+#RUN apt-get install -yqq libmcrypt-dev \
+#    && pecl install -f mcrypt \
+#    && docker-php-ext-enable mcrypt
+# Unsure if the next part is necessary but it does say -> You should add "extension=mcrypt.so" to php.ini
+#RUN echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini
 
 # Install ssh2
 #RUN apt-get install -yqq libssh2-1 libssh2-1-dev \
