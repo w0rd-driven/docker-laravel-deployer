@@ -3,7 +3,10 @@ FROM php:7.3-fpm
 MAINTAINER Jeremy Brayton <jeremy@braytonium.com>
 
 # apt-get required packages
-RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev iputils-ping
+RUN apt-get update -yqq && apt-get install -yqq git openssh-client libzip-dev zip iputils-ping
+
+# Configure zip extension to use libzip
+RUN docker-php-ext-configure zip --with-libzip
 
 # PHP extension installation
 RUN docker-php-ext-install pdo_mysql zip bcmath json pcntl posix
