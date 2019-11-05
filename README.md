@@ -5,8 +5,8 @@
 Docker image build for use with Laravel 5.x, including [deployer](http://deployer.org/).
 
 Based on work from [Ian Olson](https://gist.github.com/iolson), specifically
-https://gist.github.com/iolson/791fb1c1d1a8cfb5ffa7 and
-https://gist.github.com/iolson/5e3695bc5c9f7afafeb3 as well as
+[https://gist.github.com/iolson/791fb1c1d1a8cfb5ffa7](https://gist.github.com/iolson/791fb1c1d1a8cfb5ffa7) and
+[https://gist.github.com/iolson/5e3695bc5c9f7afafeb3](https://gist.github.com/iolson/5e3695bc5c9f7afafeb3) as well as
 [The Laravel 5.1 Starter](https://gitlab.com/nasirkhan/laravel-5-starter/blob/master/.gitlab-ci.yml).
 
 As a general rule, to speed up GitLab CI builds it is better to bake in
@@ -26,7 +26,7 @@ hope in making this public is the shared runners can benefit from a
 relatively streamlined and custom image for our needs.
 
 There are more feature-rich Laravel docker images like
-https://hub.docker.com/r/bobey/docker-gitlab-ci-runner-php5.6/ if this
+[https://hub.docker.com/r/bobey/docker-gitlab-ci-runner-php5.6/](https://hub.docker.com/r/bobey/docker-gitlab-ci-runner-php5.6/) if this
 isn't suitable for your needs.
 
 ## Development
