@@ -45,4 +45,6 @@ crashlytics.properties
 crashlytics-build.properties
 fabric.properties
 
-.idea/
+# Custom ignore rules
+/.idea
+/.vscode
