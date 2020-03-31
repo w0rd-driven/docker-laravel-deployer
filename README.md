@@ -34,7 +34,7 @@ isn't suitable for your needs.
 To support a new version of PHP:
 
 1. Create a new top level directory, i.e. `7.3`.
-2. Replicate the prior `Dockerfile`, essentially `cp 7.2/DockerFile 7.3`.
+2. Replicate the prior `Dockerfile`, essentially `cp 7.2/Dockerfile 7.3`.
 3. Change the line `FROM php:7.2-fpm` to `FROM php:7.3-fpm`.
    1. This assumes the internal build tags don't change. Fortunately this tag is rather stable.
 4. Build your new image to test: `docker build ./7.3 -t w0rd-driven/docker-laravel-deployer:7.3`.
