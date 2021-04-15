@@ -1,20 +1,17 @@
-FROM php:7.3-fpm
+FROM php:8.0-fpm
 
 LABEL Maintainer="Jeremy Brayton <jeremy@braytonium.com>"
 
 # apt-get required packages
 RUN apt-get update -yqq && apt-get install -yqq git openssh-client libzip-dev zip unzip iputils-ping libicu-dev libxml2-dev
 
-# Configure zip extension to use libzip
-RUN docker-php-ext-configure zip --with-libzip
-
 # PHP extension installation
-RUN docker-php-ext-install pdo_mysql zip bcmath json pcntl posix intl soap
+RUN docker-php-ext-install pdo_mysql zip bcmath pcntl posix intl soap
 
 # Install iconv and gd
 RUN apt-get install -yqq libfreetype6-dev libjpeg62-turbo-dev libpng-dev \
     && docker-php-ext-install -j$(nproc) iconv \
-    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/ \
     && docker-php-ext-install -j$(nproc) gd
 
 # Install mcrypt
