@@ -1,6 +1,6 @@
 FROM php:7.2-fpm
 
-LABEL Maintainer="Jeremy Brayton <jeremy@braytonium.com>"
+LABEL Maintainer="Jeremy Brayton"
 
 # apt-get required packages
 RUN apt-get update -yqq && apt-get install -yqq git openssh-client zlib1g-dev zip unzip iputils-ping libicu-dev libxml2-dev
