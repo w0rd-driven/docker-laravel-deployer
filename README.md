@@ -4,6 +4,7 @@
 
 * [Introduction](#introduction)
 * [Development](#development)
+* [2023 September](#2023-september)
 * [Potential Breaking Changes](#potential-breaking-changes)
 * [Resources](#resources)
 
@@ -55,6 +56,16 @@ To support a new version of PHP:
 6. Push the local image to Docker Hub (required as automated builds are no longer enabled)
    1. `docker push w0rddriven/docker-laravel-deployer:8.1`
    2. Repeat as necessary for all tags. As of 8/2022 this should be 7.4, 8.0, 8.1, and latest (8.1).
+
+## 2023 September
+
+Due to what looks like breaking changes with `bookworm` based images, which affect PHP 8.1 and 8.2 so far, we've explicitly referenced the `bullseye` base via `FROM php:8.2-fpm-bullseye`.
+There may be a trick to get this working or PHP upstream has to correct something but considering this affects Python, another dynamic interpreted language something tells me that may not happen unless `bookworm` itself handles it.
+
+See [https://forum.gitlab.com/t/jobs-fails-shell-not-found-version-python/88340](https://forum.gitlab.com/t/jobs-fails-shell-not-found-version-python/88340) for details.
+
+While I was on an older version of the Gitlab runner i.e. `Unpacking gitlab-runner (16.3.1) over (15.9.1) ...`, upgrading this didn't help.
+I will try again moving the runner itself to a newer Ubuntu version because the VM needs a refresh but I don't expect anything new.
 
 ## Potential Breaking Changes
 
